@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h1>계좌관리</h1><br />
+	<h3><a href="open-form.jsp">계좌생성하기</a></h3><br />
+	
+	<h3><a href="../index.jsp">홈으로..</a></h3><br />
 </body>
 </html>

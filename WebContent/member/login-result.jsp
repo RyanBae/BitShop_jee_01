@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-		홍길동 로그인 성공
-		<a href="../index">홈으로 이동</a>
+		홍길동 로그인 성공 <br />
+		<a href="../index.jsp">홈으로 이동</a>
+		<a href="../account/main.jsp">계좌 관리</a>
 </body>
 </html>

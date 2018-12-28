@@ -18,6 +18,7 @@
 		몸무게 <input type="text" name="weight" /><br />
 		<input type="submit" id=btn value="JOIN"/>
 	</form>
+	<h3><a href="../index.jsp">홈으로</a></h3>
 
 </body>
 </html>
