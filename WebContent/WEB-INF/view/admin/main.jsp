@@ -109,7 +109,7 @@
 </style>
 </head>
 <body>
-<%System.out.println(" => 게시판 메인 입장"); %>
+<%System.out.println(" => 관리자 메인 입장"); %>
 <table id="wrapper">
 	<tr>
 		<td colspan="2">
@@ -125,14 +125,14 @@
                             </li>
                         <li ><a href="account.do" >계좌관리</a></li>
                             
-                        <li><a href="article.do"><font color="red">게시판</font></a>
+                        <li><a href="article.do">게시판</a>
                             <ul>
                                 <li><a href="article.do">글쓰기</a></li>
                                 <li><a href="">게시판 목록</a></li>
                                 <li><a href="">게시판 수정</a></li>
                             </ul></li>
-                        <li><a href="admin.do">관리자</a>
-                      
+                        <li><a href="admin.do"><font color="red">관리자</font></a></li>
+                     
                     </ul>
                 </div>
 		</td>
@@ -141,16 +141,13 @@
 		<td id="side-menu">
 			<table>
 				<tr>
-					<td style="background-color:Gray; "><b>게시글 목록</b></td>
+					<td style="background-color:Gray; "><b>관리 목록</b></td>
 				</tr>
 				<tr>
-					<td>게시글</td>
+					<td>계좌목록</td>
 				</tr>
 				<tr>
-					<td>게시글확인</td>
-				</tr>
-				<tr>
-					<td>게시글삭제</td>
+					<td>계좌검색(이름)</td>
 				</tr>
 			
 			</table>
