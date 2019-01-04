@@ -170,7 +170,6 @@
 					<tr>
 						<td>회원삭제</td>
 					</tr>
-
 				</table>
 			</td>
 			<td></td>

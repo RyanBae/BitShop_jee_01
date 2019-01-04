@@ -23,38 +23,42 @@ public class MemberController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("======> 맴버 서블릿 입장");
 		String cmd = request.getParameter("cmd");
+		cmd = (cmd == null) ? "move" : cmd;
 		System.out.println("cmd :: "+cmd);
 		
 		String page = request.getParameter("page");
-		System.out.println("page :: "+page);
 		if(page == null) {page="main";}
+		System.out.println("page :: "+page);
+		
 		String dir = request.getParameter("dir");
-		System.out.println("dir = "+dir);
 		if(dir == null) {
 			String sPath =  request.getServletPath();
+			System.out.println("spath :: "+ sPath);
 			sPath = sPath.replace(".do", "");
+			System.out.println("2.spath :: "+ sPath);
 			dir=sPath.substring(1);
+			System.out.println("2. dir ::"+dir);
 		}
 		
-		switch((cmd == null) ? "move" : cmd) {
+		switch(cmd) {
 		case "login": 
 			System.out.println("스위치 오면서  ==="+dir);
 			System.out.println("case = login ,액션이 ="+cmd);
-			String id = request.getParameter("id");
-			String pass = request.getParameter("pass");
+			String id = request.getParameter("uid");
+			String pass = request.getParameter("upw");
 
-			if(id.equals("test")&&pass.equals("test")) {
+			if(!(id.equals("test")&&pass.equals("test"))) {
 				System.out.println("1====맴버서블릿에서 OUT");
-				Command.move(request, response, dir+"/"+page);
-			}else {
+				dir = "";
+				page = "index";
 				System.out.println("2====맴버서블릿에서 OUT");
-				Command.move(request, response, "index");
 			}
+			Command.move(request, response, dir,page);
 			break;
 		case "move" : 
 			System.out.println("case = move ,액션이 ="+cmd);
 			System.out.println("3====맴버서블릿에서 OUT");
-				Command.move(request, response, dir+"/"+page);
+				Command.move(request, response, dir,page);
 				break;
 
 		}

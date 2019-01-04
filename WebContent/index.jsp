@@ -30,7 +30,7 @@
 				
 					<table id="login-inner-tab">
 						<tr>
-							<td><input id="userid-input" name="id"
+							<td><input id="uid" name="uid"
 								type="text" value="test" placeholder="ID" tabindex="1" />
 							</td>
 							<td rowspan="2">
@@ -38,7 +38,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td><input id="password-input" name="pass"
+							<td><input id="upw" name="upw"
 									type="password" value="test" placeholder="PASSWORD"
 									tabindex="2" /> 
 								<input type="hidden" name="cmd" value="login" /> 
