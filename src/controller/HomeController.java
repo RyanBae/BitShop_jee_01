@@ -43,6 +43,7 @@ public class HomeController extends HttpServlet {
 		switch(cmd) {
 		case "move": 
 			System.out.println("case = move,액션이 ="+cmd);
+			System.out.println("마지막은 :::"+dir+page);
 			Command.move(request, response, dir,page);
 			break;
 		}

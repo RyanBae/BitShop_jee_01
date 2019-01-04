@@ -1,13 +1,14 @@
 package domain;
 
 public class ArticleBean {
-	private String seq, title, content, writer, regdate;
-
-	public String getSeq() {
+	private String title, content, writer, regdate;
+	private int seq;
+	
+	public int getSeq() {
 		return seq;
 	}
 
-	public void setSeq(String seq) {
+	public void setSeq(int seq) {
 		this.seq = seq;
 	}
 

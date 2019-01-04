@@ -17,9 +17,7 @@ import pool.Constant;
 @WebServlet("/member.do")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-
-
+  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("======> 맴버 서블릿 입장");
 		String cmd = request.getParameter("cmd");
@@ -53,13 +51,16 @@ public class MemberController extends HttpServlet {
 				page = "index";
 				System.out.println("2====맴버서블릿에서 OUT");
 			}
+			
+			request.setAttribute("name", "test");
+			request.setAttribute("compo", "login-success");
 			Command.move(request, response, dir,page);
 			break;
 		case "move" : 
 			System.out.println("case = move ,액션이 ="+cmd);
 			System.out.println("3====맴버서블릿에서 OUT");
-				Command.move(request, response, dir,page);
-				break;
+			Command.move(request, response, dir,page);
+			break;
 
 		}
 	}

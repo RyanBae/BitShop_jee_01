@@ -1,44 +1,29 @@
 package domain;
 
 public class AccountBean {
-	private String id, name, pass, ssn;
-
-	public String getId() {
-		return id;
+	private String accountNum, today ;
+	private int money;
+	public String getAccountNum() {
+		return accountNum;
 	}
-
-	public void setId(String id) {
-		this.id = id;
+	public void setAccountNum(String accountNum) {
+		this.accountNum = accountNum;
 	}
-
-	public String getName() {
-		return name;
+	public String getToday() {
+		return today;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setToday(String today) {
+		this.today = today;
 	}
-
-	public String getPass() {
-		return pass;
+	public int getMoney() {
+		return money;
 	}
-
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setMoney(int money) {
+		this.money = money;
 	}
-
-	public String getSsn() {
-		return ssn;
-	}
-
-	public void setSsn(String ssn) {
-		this.ssn = ssn;
-	}
-
 	@Override
 	public String toString() {
-		return "AccountBean [id=" + id + ", name=" + name + ", pass=" + pass + ", ssn=" + ssn + "]";
+		return "AccountBean [accountNum=" + accountNum + ", today=" + today + ", money=" + money + "]";
 	}
-	
 	
 }

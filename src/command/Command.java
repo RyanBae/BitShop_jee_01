@@ -23,7 +23,6 @@ public class Command {
 	public static void dirPath(HttpServletRequest request, 
 			HttpServletResponse response, String letcmd, String letdir, String letpage) throws ServletException, IOException {
 		System.out.println("커맨더 dir 으로 진입 ==");
-		
 		String cmd = request.getParameter("cmd");
 		cmd = (cmd==null)? "move" : cmd;
 		
@@ -44,5 +43,6 @@ public class Command {
 		System.out.println("page :: "+page);
 		System.out.println("2. page :: "+page);
 		
+
 	}
 }
