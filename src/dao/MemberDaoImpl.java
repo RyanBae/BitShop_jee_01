@@ -1,31 +1,31 @@
-package service;
+package dao;
 
 import java.util.ArrayList;
 
 import domain.MemberBean;
 
-public class MemberServiceImpl implements MemberService{
+public class MemberDaoImpl implements MemberDao {
 
 	@Override
-	public void joinMember() {
+	public void createMember() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public ArrayList<MemberBean> findBuList() {
+	public ArrayList<MemberBean> selectMembers() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<MemberBean> findByName(String id) {
+	public ArrayList<MemberBean> selectByName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public MemberBean findById(String name) {
+	public MemberBean selectById() {
 		// TODO Auto-generated method stub
 		return null;
 	}

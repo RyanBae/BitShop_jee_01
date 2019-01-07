@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style.css" />
+<link rel="stylesheet"
+	href="<%=application.getContextPath()%>/resources/css/style.css" />
 </head>
 <body>
 	<%
@@ -13,49 +14,31 @@
 	%>
 	<table id="wrapper">
 		<tr>
-			<td colspan="2">
-				<h1>비트 쇼핑몰</h1>
+			<td colspan="2"><%@ include file="../home/header.jsp"%>
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2">
-				<div class="menubar">
-					<ul>
-						<li><a href="home.do">홈</a></li>
-						<li><a href="member.do"><font color="red">회원관리</font></a></li>
-						<li><a href="account.do">계좌관리</a></li>
-						<li><a href="article.do">게시판</a>
-							<ul>
-								<li><a href="article.do">글쓰기</a></li>
-								<li><a href="">게시판 목록</a></li>
-								<li><a href="">게시판 수정</a></li>
-							</ul></li>
-						<li><a href="admin.do">관리자</a>
-							<ul>
-								<li><a href="admin.do">관리자 페이지</a></li>
-							</ul></li>
-					</ul>
-				</div>
+			<td colspan="2"><%@ include file="../home/navi-bar.jsp"%>
 			</td>
 		</tr>
 		<tr style="height: 300px">
-			<td id="side-menu">
-				<table>
-					<tr>
-						<td style="background-color: Gray;"><b>회원 관리 목록</b></td>
-					</tr>
-					<tr>
-						<td>회원목록</td>
-					</tr>
-					<tr>
-						<td>회원찾기</td>
-					</tr>
-					<tr>
-						<td>회원삭제</td>
-					</tr>
-				</table>
+			<td><%@ include file="side-menu.jsp"%>
 			</td>
-			<td></td>
+			<td>
+			<%
+			String dest = request.getAttribute("dest").toString();
+			switch(dest){
+			case "NONE" : 
+				%><%@ include file="mypage.jsp"%><% 
+				break;
+			case "join-form" : 
+				%><%@include file="join-form.jsp" %><%
+				break;
+			}
+			
+			%>
+		
+			</td>
 		</tr>
 	</table>
 </body>

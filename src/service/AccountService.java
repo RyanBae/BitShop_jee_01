@@ -18,7 +18,7 @@ public interface AccountService {
 		 * READ
 		 * */
 		public ArrayList<AccountBean> findByAll(); //계좌 금액 확인
-		public AccountBean findByAccountNem(String accountNum); //계좌 금액 확인
+		public AccountBean findByAccountNum(String accountNum); //계좌 금액 확인
 		public int countAccount();
 		public boolean existAccountNum(String accountNum);
 		public String findDate();//날짜

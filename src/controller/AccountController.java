@@ -40,18 +40,54 @@ public class AccountController extends HttpServlet {
 		switch(cmd) {
 		case "move": 
 			System.out.println("case = move,액션이 ="+cmd);
+			String dest = request.getParameter("dest");
+			if(dest==null) {
+				dest = "open-form";
+			}
+			request.setAttribute("dest", dest);
 			Command.move(request, response, dir,page);
 			break;
 		case "open-account":
 			String money = request.getParameter("money");
 			System.out.println("돈은 ::"+money);
-			accountBean.setMoney(Integer.parseInt(money));
-			System.out.println(accountBean.getMoney());
-			//accountService.createAccountNum(money);
+			dest = request.getParameter("dest");
+			if(dest==null) {
+				dest = "open-result";
+			}
+			request.setAttribute("dest", dest);
+			System.out.println("dest::::"+dest);
+		
+			String can= accountService.createAccountNum(Integer.parseInt(money));
+			System.out.println(can);
 			
-
+			AccountBean acc = accountService.findByAccountNum(can);
+			System.out.println("acc:::"+acc);
+			request.setAttribute("acc", acc);
+			page = "main";
+			System.out.println("dir+ page ::"+dir+page);
 			Command.move(request, response, dir,page);
 			break;
+/*			String[] cans = can.split(",");
+			System.out.println(cans[0]);
+			System.out.println(cans[1]);
+			System.out.println(cans[2]);
+			
+			String acc = cans[0];
+			money = cans[2];
+			String date = cans[1];
+			
+			System.out.println("계좌::"+acc);
+			System.out.println("돈::"+money);
+			System.out.println("날짜::"+date);
+			request.setAttribute("money", money);
+			request.setAttribute("num", acc);
+			request.setAttribute("date", date);
+*/			
+			
+			//accountService.createAccountNum(money);
+			
+		
+	
 		}
 	}
 

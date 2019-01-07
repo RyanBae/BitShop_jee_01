@@ -59,6 +59,12 @@ public class MemberController extends HttpServlet {
 		case "move" : 
 			System.out.println("case = move ,액션이 ="+cmd);
 			System.out.println("3====맴버서블릿에서 OUT");
+			String dest = request.getParameter("dest");
+			if(dest ==null) { 
+				dest = "NONE";
+			}
+			request.setAttribute("dest", dest);
+			
 			Command.move(request, response, dir,page);
 			break;
 

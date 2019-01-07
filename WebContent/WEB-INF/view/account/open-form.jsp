@@ -5,7 +5,7 @@
 		<h1>계좌 계설</h1>
 		입금액 : <input type="text" name="money" />
 		 <input type="hidden" name="cmd" value="open-account" />
-			 <input type="hidden" name="page" value="open-result" />
+		<input type="hidden" name="page" value="open-result" />
 			 <input type="submit" id="btn" value="확인" />
 	</form>
 </div>

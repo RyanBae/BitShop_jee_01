@@ -18,15 +18,15 @@ public class AccountServiceImpl implements AccountService {
 	
 	@Override
 	public String createAccountNum(int money) {
-		String accountNum="";
-		AccountBean abean = new AccountBean();
-		abean.setAccountNum(AccNum());
-		abean.setToday(findDate());
-		abean.setMoney(0);
-		list.add(abean);
-		System.out.println(accountNum);
-		return accountNum;
+		AccountBean accountBean = new AccountBean();
+		accountBean.setAccountNum(AccNum());
+		accountBean.setToday(findDate());
+		accountBean.setMoney(money);
 		
+		String accountNum = accountBean.getAccountNum();
+		System.out.println("확인!!:::"+accountNum);
+		list.add(accountBean);
+		return accountNum;
 	}
 
 	@Override
@@ -51,9 +51,15 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public AccountBean findByAccountNem(String accountNum) {
-		// TODO Auto-generated method stub
-		return null;
+	public AccountBean findByAccountNum(String accountNum) {
+		AccountBean accountBean = new AccountBean();
+		for(int i=0; i<list.size(); i++) {
+			if(accountNum.equals(list.get(i).getAccountNum()))
+				accountBean = list.get(i);
+			break;
+		}
+		
+		return accountBean;
 	}
 
 	@Override
