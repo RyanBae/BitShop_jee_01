@@ -2,32 +2,46 @@ package service;
 
 import java.util.ArrayList;
 
+import dao.MemberDaoImpl;
 import domain.MemberBean;
 
 public class MemberServiceImpl implements MemberService{
+	
+	private static MemberServiceImpl instance = new MemberServiceImpl();
+	private MemberServiceImpl() {}
+	public static MemberServiceImpl getInstance() {return instance;}
 
+	
+	
 	@Override
-	public void joinMember() {
-		// TODO Auto-generated method stub
+	public void joinMember(MemberBean member) {
+		System.out.println("맴버서비스 조인에 진입");
+		System.out.println("===컨트롤러에서넘어온 회원정보===");
+		System.out.println("ID :"+member.getId());
+		System.out.println("NAME :"+member.getName());
+		System.out.println("PASS :"+member.getPass());
+		System.out.println("SSN :"+member.getSsn());
 		
+		MemberDaoImpl.getInstance().insertMember(member);
 	}
 
 	@Override
-	public ArrayList<MemberBean> findBuList() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<MemberBean> findByList() {
+		ArrayList<MemberBean> list =  new ArrayList<>();
+		return list;
 	}
 
 	@Override
-	public ArrayList<MemberBean> findByName(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<MemberBean> findByName(String name) {
+		ArrayList<MemberBean> list =  new ArrayList<>();
+		return list;
 	}
 
 	@Override
-	public MemberBean findById(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public MemberBean findById(String id) {
+		MemberBean member = new MemberBean();
+		
+		return member;
 	}
 
 	@Override
@@ -44,14 +58,12 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public void updatePass(String id, String pass, String newpass) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void deleteContent(String id, String pass) {
-		// TODO Auto-generated method stub
-		
 	}
+
+
 
 }

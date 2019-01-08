@@ -9,14 +9,15 @@ public interface MemberService {
 	/**
 	 * CREATE
 	 * */
-	public void joinMember();
+	public void joinMember(MemberBean member);
+		
 	
 	/**
 	 * READ
 	 * */
-	public ArrayList<MemberBean> findBuList();
-	public ArrayList<MemberBean> findByName(String id);
-	public MemberBean findById(String name);
+	public ArrayList<MemberBean> findByList();
+	public ArrayList<MemberBean> findByName(String name);
+	public MemberBean findById(String id);
 	public int countMembers();
 	public boolean existLogin(String id, String pass);
 	/**

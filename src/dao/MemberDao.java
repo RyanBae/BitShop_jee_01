@@ -6,7 +6,7 @@ import domain.MemberBean;
 
 public interface MemberDao {
 
-	public void createMember();
+	public void insertMember(MemberBean member);
 	
 	public ArrayList<MemberBean> selectMembers();
 	public ArrayList<MemberBean> selectByName();
