@@ -9,24 +9,20 @@ import controller.AccountController;
 import domain.AccountBean;
 
 public class AccountServiceImpl implements AccountService {
-	private ArrayList<AccountBean> list;
 	
-	public AccountServiceImpl() {
-		list = new ArrayList<>();
-	}
-	
-	
+	private static AccountServiceImpl instance = new AccountServiceImpl();
+	private AccountServiceImpl() {}
+	public static AccountServiceImpl getInstance() {return instance;}
+
 	@Override
-	public String createAccountNum(int money) {
-		AccountBean accountBean = new AccountBean();
-		accountBean.setAccountNum(AccNum());
-		accountBean.setToday(findDate());
-		accountBean.setMoney(money);
+	public void createAccountNum(AccountBean account) {
+		System.out.println("AccountServiceImpl 입장====");
+		System.out.println("AccountNum :"+account.getAccountNum());
+		System.out.println("findDate :"+ account.getToday());
+		System.err.println("money :"+account.getMoney());
 		
-		String accountNum = accountBean.getAccountNum();
-		System.out.println("확인!!:::"+accountNum);
-		list.add(accountBean);
-		return accountNum;
+		AccountServiceImpl.instance.createAccountNum(account);
+	
 	}
 
 	@Override
@@ -45,33 +41,28 @@ public class AccountServiceImpl implements AccountService {
 
 
 	@Override
-	public ArrayList<AccountBean> findByAll() {
-
-		return null;
+	public ArrayList<AccountBean> findAccountByAll() {
+		ArrayList<AccountBean> list = new ArrayList<>();
+		return list;
 	}
 
 	@Override
 	public AccountBean findByAccountNum(String accountNum) {
 		AccountBean accountBean = new AccountBean();
-		for(int i=0; i<list.size(); i++) {
-			if(accountNum.equals(list.get(i).getAccountNum()))
-				accountBean = list.get(i);
-			break;
-		}
 		
 		return accountBean;
 	}
 
 	@Override
 	public int countAccount() {
-		// TODO Auto-generated method stub
-		return 0;
+		 int count = 0;
+		return count;
 	}
 
 	@Override
 	public boolean existAccountNum(String accountNum) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean exist = false;
+		return exist;
 	}
 
 	@Override
@@ -81,26 +72,21 @@ public class AccountServiceImpl implements AccountService {
 		return sdf.format(date);
 	}
 
-	@Override
-	public AccountBean today() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public void withdrawMoney(String accountNum, int money) {
+	public void withdrawMoney(int money) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void depositMoney(String accountNum, int money) {
+	public void depositMoney(int money) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteAccountNum(String accountNum) {
+	public void removeAccountNum(String accountNum) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -8,13 +8,12 @@ public interface MemberDao {
 
 	public void insertMember(MemberBean member);
 	
-	public ArrayList<MemberBean> selectMembers();
-	public ArrayList<MemberBean> selectByName();
-	public MemberBean selectById();
+	public ArrayList<MemberBean> selectAllMembers();
+	public ArrayList<MemberBean> selectMembersByName(String name);
+	public MemberBean selectMemberById(String id);
 	public int countMembers();
-	public boolean existLogin(String id, String pass);
 
-	public void updatePass(String id, String pass, String newpass);
+	public void updatePass(MemberBean member);
 
-	public void deleteContent(String id, String pass);
+	public void deleteContent(String id);
 }

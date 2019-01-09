@@ -78,9 +78,9 @@ public class MemberController extends HttpServlet {
 			member.setPass(request.getParameter("pass"));
 			member.setSsn(request.getParameter("ssn"));
 			
-			MemberServiceImpl.getInstance().joinMember(member);
+			MemberServiceImpl.getInstance().createMember(member);
 			request.setAttribute("dest", "mypage");
-			request.setAttribute("member", MemberServiceImpl.getInstance().findById(member.getId()));
+			request.setAttribute("member", MemberServiceImpl.getInstance().findMemberById((member.getId())));
 			System.out.println("어디로 갈까"+dir+"/"+page);
 			Command.move(request, response, dir, page);
 			

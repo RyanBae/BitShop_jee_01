@@ -9,23 +9,23 @@ public interface MemberService {
 	/**
 	 * CREATE
 	 * */
-	public void joinMember(MemberBean member);
+	public void createMember(MemberBean member);
 		
 	
 	/**
 	 * READ
 	 * */
-	public ArrayList<MemberBean> findByList();
-	public ArrayList<MemberBean> findByName(String name);
-	public MemberBean findById(String id);
+	public ArrayList<MemberBean> findAllMembers();
+	public ArrayList<MemberBean> findMembersByName(String name);
+	public MemberBean findMemberById(String id);
 	public int countMembers();
-	public boolean existLogin(String id, String pass);
+	public boolean existMember(String id, String pass);
 	/**
 	 * UPDATE
 	 * */
-	public void updatePass(String id, String pass, String newpass);
+	public void changePass(MemberBean member);
 	/**
 	 * DELETE
 	 * */
-	public void deleteContent(String id, String pass);
+	public void removeContent(String id);
 }

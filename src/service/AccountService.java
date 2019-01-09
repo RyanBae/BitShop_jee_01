@@ -11,30 +11,29 @@ public interface AccountService {
 		/**
 		 * CREATE
 		 * */
-		public String createAccountNum(int money); //신규생성
+		public void createAccountNum(AccountBean account); //신규생성
 		public String AccNum(); //계좌번호
 		
 		/**
 		 * READ
 		 * */
-		public ArrayList<AccountBean> findByAll(); //계좌 금액 확인
+		public ArrayList<AccountBean> findAccountByAll(); //계좌 전체 확인
 		public AccountBean findByAccountNum(String accountNum); //계좌 금액 확인
 		public int countAccount();
 		public boolean existAccountNum(String accountNum);
 		public String findDate();//날짜
-		public AccountBean today(); 
 		
 		
 		/**
 		 * UPDATE
 		 * */
-		public void withdrawMoney(String accountNum,int money); //출금
-		public void depositMoney(String accountNum,int money); //입금
+		public void withdrawMoney(int money); //출금
+		public void depositMoney(int money); //입금
 		
 		/**
 		 * DELETE
 		 * */
-		public void deleteAccountNum(String accountNum);
+		public void removeAccountNum(String accountNum);
 		
 		
 	}

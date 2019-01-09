@@ -22,8 +22,8 @@ public class AccountController extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("======> 계좌 서블릿 입장");
-		AccountService accountService = new AccountServiceImpl();
-		AccountBean accountBean = new AccountBean();
+		AccountService accountService = null;
+		AccountBean account = null;
 		String cmd = request.getParameter("cmd");
 		cmd = (cmd==null)? "move" : cmd;
 		System.out.println("cmd::" + cmd);
@@ -48,7 +48,19 @@ public class AccountController extends HttpServlet {
 			Command.move(request, response, dir,page);
 			break;
 		case "open-account":
-			String money = request.getParameter("money");
+			System.out.println("open-account 입장====");
+			account = new AccountBean();
+			account.setAccountNum(accountService.AccNum());
+			account.setMoney(Integer.parseInt((request.getParameter("money"))));
+			account.setToday(accountService.findDate());
+			
+			AccountServiceImpl.getInstance().createAccountNum(account);
+			request.setAttribute("account", AccountServiceImpl.getInstance().findByAccountNum(account.getAccountNum()));
+			System.out.println("어디로 갈까~?"+dir+"/"+page);
+			Command.move(request, response, dir, page);
+			
+			break;
+/*			String money = request.getParameter("money");
 			System.out.println("돈은 ::"+money);
 			dest = request.getParameter("dest");
 			if(dest==null) {
@@ -56,17 +68,14 @@ public class AccountController extends HttpServlet {
 			}
 			request.setAttribute("dest", dest);
 			System.out.println("dest::::"+dest);
-		
-			String can= accountService.createAccountNum(Integer.parseInt(money));
-			System.out.println(can);
 			
-			AccountBean acc = accountService.findByAccountNum(can);
+			AccountBean acc = accountService.findByAccountNum(accountBean.getAccountNum());
 			System.out.println("acc:::"+acc);
 			request.setAttribute("acc", acc);
 			page = "main";
 			System.out.println("dir+ page ::"+dir+page);
-			Command.move(request, response, dir,page);
-			break;
+			Command.move(request, response, dir,page);*/
+			
 /*			String[] cans = can.split(",");
 			System.out.println(cans[0]);
 			System.out.println(cans[1]);
