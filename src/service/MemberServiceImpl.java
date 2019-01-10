@@ -1,9 +1,13 @@
 package service;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import dao.MemberDao;
 import dao.MemberDaoImpl;
 import domain.MemberBean;
+import factory.DatabaseFactory;
 
 public class MemberServiceImpl implements MemberService{
 	
@@ -24,12 +28,15 @@ public class MemberServiceImpl implements MemberService{
 		System.out.println("PASS :"+member.getPass());
 		System.out.println("SSN :"+member.getSsn());
 		
+	
+		
 		dao.insertMember(member);
 	}
 
 	@Override
 	public ArrayList<MemberBean> findAllMembers() {
 		ArrayList<MemberBean> list =  new ArrayList<>();
+		
 		return list;
 	}
 
@@ -41,9 +48,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public MemberBean findMemberById(String id) {
-		MemberBean member = dao.selectMemberById(id);
-		
-		return member;
+		return dao.selectMemberById(id);
 	}
 
 	@Override
@@ -54,8 +59,27 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public boolean existMember(String id, String pass) {
-	
-		return false;
+		MemberBean member = dao.selectMemberById(id);
+		boolean exist = false;	
+		System.out.println("exist id:::" +member.getId());
+			System.out.println("exist name:::" +member.getName());
+			System.out.println("exist pass:::" +member.getPass());
+			System.out.println("exist ssn:::" +member.getSsn());
+			
+			if(!(id.equals(member.getId()) && pass.equals(member.getPass()))) {
+				System.out.println("DB에 id ::"+member.getId()+" / 파라미터 id ::"+id);
+				System.out.println("DB에 pass ::"+member.getPass()+" / 파라미터 pass ::"+pass);
+				System.out.println("exist ::true == 비교 값이 '다름'");
+				
+				exist = true;
+			} else {
+				System.out.println("DB에 id ::"+member.getId()+" / 파라미터 id ::"+id);
+				System.out.println("DB에 pass ::"+member.getPass()+" / 파라미터 pass ::"+pass);
+				System.out.println("exist ::false == 비교 값이 '같음'!");
+				exist = false;
+			}
+			
+		return exist;
 	}
 
 	@Override

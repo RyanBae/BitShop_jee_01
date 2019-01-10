@@ -89,23 +89,30 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public MemberBean selectMemberById(String id) {
-		MemberBean member = new MemberBean();
+		MemberBean member = null;
+		System.out.println("MemberDao SelectMemberById 입장!=====");
 		try {
-			Class.forName("oracle.jdbc.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe",
-					"oracle", "password");
-			stmt = conn.createStatement();
-			
-			String sql = String.format("", "");
-			rs = stmt.executeQuery(sql);
-			while(rs.next()) { //검색된 결과가 존재하면 true 리턴
+			ResultSet rs = DatabaseFactory
+				.createDatabase("oracle")
+				.getConnection()
+				.createStatement()
+				.executeQuery(
+						String.format("SELECT * FROM member\n" + 
+						"WHERE id LIKE '%s'",id));
+			while(rs.next()) {
+				member = new MemberBean();
+				member.setId(rs.getString("id"));
+				member.setName(rs.getString("name"));
+				member.setPass(rs.getString("pass"));
+				member.setSsn(rs.getString("ssn"));
 				
 			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+	
 		return member;
 	}
 

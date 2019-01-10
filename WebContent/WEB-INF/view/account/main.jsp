@@ -4,7 +4,7 @@
 <body>
 	<%
 		System.out.println(" => 계좌 메인 입장");
-	String dest = request.getAttribute("dest").toString();
+	String dest = String.valueOf(request.getAttribute("dest"));
 	System.out.println("dest:::"+dest);
 	%>
 
@@ -22,10 +22,11 @@
 			</td>
 			<td>
 				<%
-				
-				
 				switch(dest){
-				case "open-form" : 
+				case "NONE" : case "account-detail" : 
+					%><%@ include file="account-detail.jsp"%><%
+					break;
+				case "open-form" :  
 					%><%@ include file="open-form.jsp"%><%
 					break;
 				case "open-result":

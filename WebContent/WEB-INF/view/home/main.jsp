@@ -20,12 +20,12 @@
 			<td>
 				<div id="content">
 				<%
-				String compo = request.getAttribute("compo").toString();
-				 switch(compo){
-					 case "login-success" : 
-						 %><%@ include file="login-success.jsp" %><% 
+				String dest = String.valueOf(request.getAttribute(("dest")));
+				System.out.println("홈메인에 들어온 dest ::" + dest);
+				 switch(dest){
+					 case "welcome" : 
+						 %><%@ include file="welcome.jsp" %><% 
 						 break;
-					
 				 }
 				%>
 				</div>

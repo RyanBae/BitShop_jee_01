@@ -36,14 +36,13 @@ public class AccountController extends HttpServlet {
 		
 		String page = request.getParameter("page");
 		if(page==null) {page="main";}
+		String dest = request.getParameter("dest");
+		if(dest == null) {dest="NONE";}
 
 		switch(cmd) {
 		case "move": 
 			System.out.println("case = move,액션이 ="+cmd);
-			String dest = request.getParameter("dest");
-			if(dest==null) {
-				dest = "open-form";
-			}
+			
 			request.setAttribute("dest", dest);
 			Command.move(request, response, dir,page);
 			break;
@@ -94,7 +93,10 @@ public class AccountController extends HttpServlet {
 */			
 			
 			//accountService.createAccountNum(money);
+		case "account-detail" : 
 			
+			
+			break;
 		
 	
 		}

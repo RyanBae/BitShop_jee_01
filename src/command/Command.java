@@ -14,7 +14,8 @@ public class Command {
 	public static void move(HttpServletRequest request, 
 			HttpServletResponse response, String dir, String page) throws ServletException, IOException {
 		System.out.println("====> 커멘더 입장.");
-		System.out.println("조합은 :::"+Constant.VIEW + dir+"/"+page + Constant.JSP);
+		System.out.println("들어온 조합은 :::"+Constant.VIEW + dir+"/"+page + Constant.JSP);
+		
 		request.getRequestDispatcher((page.equals("index")) 
 				? "index"+Constant.JSP : Constant.VIEW + dir+"/"+page + Constant.JSP)
 					.forward(request, response);
