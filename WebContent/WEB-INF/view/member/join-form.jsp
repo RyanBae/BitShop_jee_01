@@ -14,5 +14,6 @@
 		<input type="hidden" name="dir" value="home" />
 		<input type="hidden" name="dest" value="welcome" />
 		<input type="submit" id=btn value="JOIN"/>
+		
 	</form>
 </div>

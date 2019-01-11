@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import command.Command;
 import domain.MemberBean;
@@ -51,6 +52,7 @@ public class MemberController extends HttpServlet {
 		String dest = request.getParameter("dest");
 		if(dest == null) {dest="NONE";}
 		System.out.println("dest>>>!!!!!!"+dest);
+		HttpSession session = request.getSession();
 		
 		switch(cmd) {
 		case "login": 
@@ -75,8 +77,8 @@ public class MemberController extends HttpServlet {
 				System.out.println("member안에 ===="+member.getSsn());
 				
 				
-				
-				request.setAttribute("member", member);
+				session = request.getSession();
+				session.setAttribute("user", member);
 				request.setAttribute("dest", "welcome");
 			}
 			
@@ -87,9 +89,7 @@ public class MemberController extends HttpServlet {
 			System.out.println("case = move ,액션이 ="+cmd);
 			System.out.println("3====맴버서블릿에서 OUT");
 		
-			request.setAttribute("dest", dest);
-			
-			
+			request.setAttribute("dest", dest);			
 			break;
 		case "join" :
 			System.out.println("조인?? 들어왔어?");
@@ -102,7 +102,8 @@ public class MemberController extends HttpServlet {
 			
 			MemberServiceImpl.getInstance().createMember(member);
 			member = MemberServiceImpl.getInstance().findMemberById((member.getId()));
-			request.setAttribute("member", member);
+			session = request.getSession();
+			
 			
 			System.out.println("dest>>>"+dest);
 			request.setAttribute("dest", dest);
@@ -114,8 +115,22 @@ public class MemberController extends HttpServlet {
 			dir = "";
 			page = "index";
 			dest = "";
+			session.invalidate();
 			break;
 			
+		case "detail": 
+			dir = "member";
+			page = "main";
+			request.setAttribute("dest", "detail");
+	
+			/*id = request.getParameter("id");
+			request.setAttribute("member", memberService.findMemberById(id));*/
+			break;
+		
+		case "update" : 
+			request.setAttribute("dest", dest);
+			
+			break;
 		}
 		Command.move(request, response, dir,page);
 	}

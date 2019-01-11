@@ -4,9 +4,8 @@
 <div id="welcome">
 <%
 	System.out.println("월컴에 들어옴.");
-	MemberBean user = (MemberBean)request.getAttribute("member");
-	String name = String.format(user.getId());
-	System.out.println("이름은?" + name);
+	MemberBean user = (MemberBean)session.getAttribute("user");
+
 	
 		%>
 		 <%=user.getName() %> 님 환영합니다. 

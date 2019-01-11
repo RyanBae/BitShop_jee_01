@@ -3,16 +3,14 @@
 <div id="side-menu">
 	<table>
 		<tr>
-			<td style="background-color: Gray;"><b>회원 관리 목록</b></td>
+			<td style="background-color: Gray;"><b>마이 페이지</b></td>
+		</tr>
+		
+		<tr>
+			<td><a href="member.do?dest=member-update">회원정보 수정</a></td>
 		</tr>
 		<tr>
-			<td>회원목록</td>
-		</tr>
-		<tr>
-			<td>회원찾기</td>
-		</tr>
-		<tr>
-			<td>회원삭제</td>
+			<td>회원 탈퇴</td>
 		</tr>
 	</table>
 </div>

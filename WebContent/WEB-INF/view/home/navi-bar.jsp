@@ -3,7 +3,7 @@
 <div id="navi-bar">
 	<ul>
 		<li><a href="home.do">홈</a></li>
-		<li><a href="member.do">회원관리</a>
+		<li><a href="member.do?cmd=detail">회원관리</a>
 			<ul>
 				<li><a href="member.do">회원가입</a></li>
 				<li><a href="">회원정보수정</a></li>
